@@ -274,7 +274,7 @@ class Tapper:
             logger.info(f"{self.session_name} | Starting in {delay} seconds")
             await asyncio.sleep(delay=delay)
 
-            token_live_time = randint(3500, 3600)
+            token_live_time = randint(600, 800)
             while True:
                 try:
                     if time() - access_token_created_time >= token_live_time:
@@ -287,31 +287,31 @@ class Tapper:
                         user_info = await self.login(http_client=http_client)
                         logger.info(f"{self.session_name} | Successful login")
                         access_token_created_time = time()
-                        token_live_time = randint(3500, 3600)
+                        token_live_time = randint(600, 800)
                         sleep_time = randint(settings.SLEEP_TIME[0], settings.SLEEP_TIME[1])
 
-                        await asyncio.sleep(delay=randint(1, 3))
+                    await asyncio.sleep(delay=randint(1, 3))
 
-                        balance = await self.get_balance(http_client)
-                        logger.info(f"{self.session_name} | Balance: <e>{balance}</e>")
+                    balance = await self.get_balance(http_client)
+                    logger.info(f"{self.session_name} | Balance: <e>{balance}</e>")
 
-                        if settings.AUTO_DRAW:
-                            await self.paint(http_client=http_client)
+                    if settings.AUTO_DRAW:
+                        await self.paint(http_client=http_client)
 
-                        if settings.CLAIM_REWARD:
-                            reward_status = await self.claim(http_client=http_client)
-                            logger.info(f"{self.session_name} | Claim reward: {reward_status}")
+                    if settings.CLAIM_REWARD:
+                        reward_status = await self.claim(http_client=http_client)
+                        logger.info(f"{self.session_name} | Claim reward: {reward_status}")
 
-                        if settings.AUTO_TASK:
-                            logger.info(f"{self.session_name} | Auto task started")
-                            await self.tasks(http_client=http_client)
-                            logger.info(f"{self.session_name} | Auto task finished")
+                    if settings.AUTO_TASK:
+                        logger.info(f"{self.session_name} | Auto task started")
+                        await self.tasks(http_client=http_client)
+                        logger.info(f"{self.session_name} | Auto task finished")
 
-                        if settings.AUTO_UPGRADE:
-                            reward_status = await self.upgrade(http_client=http_client)
+                    if settings.AUTO_UPGRADE:
+                        reward_status = await self.upgrade(http_client=http_client)
 
-                        logger.info(f"{self.session_name} | Sleep <y>{round(sleep_time / 60, 1)}</y> min")
-                        await asyncio.sleep(delay=sleep_time)
+                    logger.info(f"{self.session_name} | Sleep <y>{round(sleep_time / 60, 1)}</y> min")
+                    await asyncio.sleep(delay=sleep_time)
 
                 except InvalidSession as error:
                     raise error
