@@ -11,7 +11,7 @@ API_HASH = "147f0192ef238f2730ae6714f94072a9"  # Replace with your API hash
 def create_session(session_name, save_dir):
     try:
         # Create a path for the session file
-        session_file_path = os.path.join(save_dir, f"{session_name}.session")
+        session_file_path = os.path.join(save_dir, f"{session_name}")
 
         # Create a new session with the specified name
         app = Client(session_file_path, api_id=API_ID, api_hash=API_HASH)
