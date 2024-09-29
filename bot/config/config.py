@@ -17,6 +17,10 @@ class Settings(BaseSettings):
     AUTO_UPGRADE: bool = True
     REF_ID: str = 'f464869246'
     IGNORED_BOOSTS: list[str] = ['paintReward']
+    IN_USE_SESSIONS_PATH: str = 'bot/config/used_sessions.txt'
+    NIGHT_MODE: bool = True
+    NIGHT_TIME: list[int] = [0, 7] #UTC HOURS
+    NIGHT_CHECKING: list[int] = [3600, 7200]
 
 
 settings = Settings()
