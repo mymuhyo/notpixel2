@@ -8,6 +8,9 @@ sessions/
 
 __pycache__
 
+
+
 *.session
 
 *.cpython-310.pyc
+bot/config/used_sessions.txt

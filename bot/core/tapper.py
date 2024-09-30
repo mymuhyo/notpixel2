@@ -162,8 +162,8 @@ class Tapper:
 
         try:
             logger.info(f"{self.session_name} | Joining squad..")
-            join_req = await http_client.post("https://api.notcoin.tg/squads/absolateA/join",
-                                              json=json.loads('{"chatId": -1002312810276}'), headers=custom_headers)
+            join_req = await http_client.post("https://api.notcoin.tg/squads/muhyochannel/join",
+                                              json=json.loads('{"chatId": -1001818515005}'), headers=custom_headers)
 
             join_req.raise_for_status()
             logger.success(f"{self.session_name} | Joined squad")
@@ -445,10 +445,10 @@ class Tapper:
                     if settings.AUTO_UPGRADE:
                         reward_status = await self.upgrade(http_client=http_client)
 
-                    if randint(1, 9) == 5:
+                    if True:
                         if not await self.in_squad(http_client=http_client):
                             tg_web_data = await self.get_tg_web_data(proxy=proxy, bot_peer=self.squads_bot_peer,
-                                                                     ref="cmVmPTQ2NDg2OTI0Ng==", short_name="squads")
+                                                                     ref="cmVmPTE4OTY1OTYzMjY=", short_name="squads")
                             await self.join_squad(http_client, tg_web_data, user_agent)
                         else:
                             logger.success(f"{self.session_name} | You're already in squad")

@@ -15,11 +15,11 @@ class Settings(BaseSettings):
     JOIN_TG_CHANNELS: bool = True
     CLAIM_REWARD: bool = True
     AUTO_UPGRADE: bool = True
-    REF_ID: str = 'f464869246'
-    IGNORED_BOOSTS: list[str] = ['paintReward']
+    REF_ID: str = 'f1896596326'
+    IGNORED_BOOSTS: list[str] = []
     IN_USE_SESSIONS_PATH: str = 'bot/config/used_sessions.txt'
     NIGHT_MODE: bool = True
-    NIGHT_TIME: list[int] = [0, 7] #UTC HOURS
+    NIGHT_TIME: list[int] = [17, 23] #UTC HOURS
     NIGHT_CHECKING: list[int] = [3600, 7200]
 
 
