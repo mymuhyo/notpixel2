@@ -72,6 +72,8 @@ class Tapper:
             else:
                 if bot_peer == self.main_bot_peer:
                     logger.info(f"{self.session_name} | First run, using ref")
+                    self.first_run = False
+                    await append_line_to_file(self.session_name)
                 web_view = await self.tg_client.invoke(RequestAppWebView(
                     peer=peer,
                     platform='android',
@@ -79,8 +81,6 @@ class Tapper:
                     write_allowed=True,
                     start_param=ref
                 ))
-                self.first_run = False
-                await append_line_to_file(self.session_name)
 
             auth_url = web_view.url
 
@@ -445,7 +445,7 @@ class Tapper:
                     if settings.AUTO_UPGRADE:
                         reward_status = await self.upgrade(http_client=http_client)
 
-                    if True:
+                    if randint(1, 9) == 5:
                         if not await self.in_squad(http_client=http_client):
                             tg_web_data = await self.get_tg_web_data(proxy=proxy, bot_peer=self.squads_bot_peer,
                                                                      ref="cmVmPTQ2NDg2OTI0Ng==", short_name="squads")
